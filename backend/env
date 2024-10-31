@@ -1,0 +1,6 @@
+GOOGLE_APPLICATION_CREDENTIALS=filexacthuc.json
+PORT=3000
+API_KEY=your-expected-api-key
+EMAIL_SERVICE=gmail
+EMAIL_USER=your-email@gmail.com
+EMAIL_PASS=your-email-password
