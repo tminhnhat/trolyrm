@@ -1,0 +1,24 @@
+/* Thêm vào styles/globals.css hoặc styles/FormPage.module.css */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
