@@ -1,12 +1,133 @@
 // pages/nhap-thong-tin-khoan-vay.js
 import React from 'react';
 import '../public/styles.css'; // Đường dẫn tới file CSS
-
+import { doc, setDoc } from 'firebase/firestore';
+import { db } from './firebaseConfig';
 const NhapThongTinKhoanVay = () => {
+  const [formData, setFormData] = useState({
+    thoi_gian_gnn: '',
+    bctc_chingoaigiavon_nam_0: '',
+    bctc_chingoaigiavon_nam_1: '',
+    bctc_chingoaigiavon_nam_2: '',
+    bctc_doanhthu_nam_0: '',
+    bctc_doanhthu_nam_1: '',
+    bctc_doanhthu_nam_2: '',
+    bctc_giavon_nam_0: '',
+    bctc_giavon_nam_1: '',
+    bctc_giavon_nam_2: '',
+    bctc_laivay_nam_0: '',
+    bctc_laivay_nam_1: '',
+    bctc_laivay_nam_2: '',
+    bctc_loinhuan_nam_0: '',
+    bctc_loinhuan_nam_1: '',
+    bctc_loinhuan_nam_2: '',
+    bctc_nodaihan_nam_0: '',
+    bctc_nodaihan_nam_1: '',
+    bctc_nodaihan_nam_2: '',
+    bctc_nonhct_nam_0: '',
+    bctc_nonhct_nam_1: '',
+    bctc_nonhct_nam_2: '',
+    bctc_notctd_nam_0: '',
+    bctc_notctd_nam_1: '',
+    bctc_notctd_nam_2: '',
+    bctc_notranguoiban_nam_0: '',
+    bctc_notranguoiban_nam_1: '',
+    bctc_notranguoiban_nam_2: '',
+    bctc_phaithu_nam_0: '',
+    bctc_phaithu_nam_1: '',
+    bctc_phaithu_nam_2: '',
+    bctc_thue_nam_0: '',
+    bctc_thue_nam_1: '',
+    bctc_thue_nam_2: '',
+    bctc_tien_nam_0: '',
+    bctc_tien_nam_1: '',
+    bctc_tien_nam_2: '',
+    bctc_tonkho_nam_0: '',
+    bctc_tonkho_nam_1: '',
+    bctc_tonkho_nam_2: '',
+    bctc_tscd_nam_0: '',
+    bctc_tscd_nam_1: '',
+    bctc_tscd_nam_2: '',
+    bctc_voncsh_nam_0: '',
+    bctc_voncsh_nam_1: '',
+    bctc_voncsh_nam_2: '',
+    cbtd: '',
+    han_muc: '',
+    keyword_bienphapkiemsoatruiro: '',
+    keyword_cosovatchatthietbi: '',
+    keyword_danhgialoiich: '',
+    keyword_danhgianangluctochuckd: '',
+    keyword_danhgianguonlaodong: '',
+    keyword_danhgianguyenlieudauvao: '',
+    keyword_danhgiapakd: '',
+    keyword_danhgiaquymo: '',
+    keyword_danhgiaruiro: '',
+    keyword_danhgiathitruongtieuthu: '',
+    keyword_danhgiathongtintaichinh: '',
+    keyword_diadiemkinhdoanh: '',
+    keyword_linhvuc_kinhnghiemsxkd: '',
+    keyword_mucdophuthuocnhacungcap: '',
+    keyword_nhacungcapdauvao: '',
+    keyword_phuongthuchoatdongsxkd: '',
+    lai_suat: '',
+    lanhdaophong: '',
+    mautotrinh: '',
+    muc_dich_vay: '',
+    ngay_hdtd: '',
+    nhom_nganh_nghe: '',
+    noidung_bienphapkiemsoatruiro: '',
+    noidung_cosovatchatthietbi: '',
+    noidung_danhgialoiich: '',
+    noidung_danhgianangluctochuckd: '',
+    noidung_danhgianguonlaodong: '',
+    noidung_danhgianguyenlieudauvao: '',
+    noidung_danhgiapakd: '',
+    noidung_danhgiaquymo: '',
+    noidung_danhgiaruiro: '',
+    noidung_danhgiathitruongtieuthu: '',
+    noidung_danhgiathongtintaichinh: '',
+    noidung_diadiemkinhdoanh: '',
+    noidung_linhvuc_kinhnghiemsxkd: '',
+    noidung_mucdophuthuocnhacungcap: '',
+    noidung_nhacungcapdauvao: '',
+    noidung_phuongthuchoatdongsxkd: '',
+    pakd_chiphikhac: '',
+    pakd_doanhthu: '',
+    pakd_giavon: '',
+    pakd_laivay: '',
+    pakd_nhancong: '',
+    pakd_thue: '',
+    pakd_vaynhct: '',
+    pakd_vaytctdkhac: '',
+    pakd_vongquay: '',
+    pakd_vontuco: '',
+    so_hdtd: '',
+    sotienthuphi: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await setDoc(doc(db, 'thongtinkhcn', 'yourDocumentId'), formData);
+      alert('Data updated successfully!');
+    } catch (error) {
+      console.error('Error updating document: ', error);
+      alert('Failed to update data.');
+    }
+  };
+  
   return (
     <div>
       <h1>Nhập Thông Tin Khoản Vay</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div style={{ display: 'flex', flexWrap: 'wrap' }}>
           <div style={{ flex: '1 1 50%', padding: '10px' }}>
             <label>Thời Gian GNN</label>
