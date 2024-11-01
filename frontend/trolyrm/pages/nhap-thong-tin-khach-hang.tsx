@@ -2,7 +2,7 @@
 import React from 'react';
 import '../public/styles.css'; // Đường dẫn tới file CSS
 import { doc, setDoc } from 'firebase/firestore';
-import { db } from './firebaseConfig';
+import { db } from '../provider/firebaseConfig';
 
 const NhapThongTinKhachHang = () => {
   const [formData, setFormData] = useState({

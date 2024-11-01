@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { doc, setDoc } from 'firebase/firestore';
-import { db } from './firebaseConfig';
+import { db } from '../provider/firebaseConfig';
 
 const NhapThongTinTSBD = () => {
   const [formData, setFormData] = useState({
