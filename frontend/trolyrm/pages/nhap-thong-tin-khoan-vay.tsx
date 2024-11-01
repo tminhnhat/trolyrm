@@ -1,5 +1,5 @@
 // pages/nhap-thong-tin-khoan-vay.js
-import React from 'react';
+import React, { useState } from 'react';
 import '../public/styles.css'; // Đường dẫn tới file CSS
 import { doc, setDoc } from 'firebase/firestore';
 import { db } from '../provider/firebaseConfig';

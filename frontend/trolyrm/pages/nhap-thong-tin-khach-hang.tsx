@@ -1,5 +1,5 @@
 // pages/nhap-thong-tin-khach-hang.js
-import React from 'react';
+import React, { useState } from 'react';
 import '../public/styles.css'; // Đường dẫn tới file CSS
 import { doc, setDoc } from 'firebase/firestore';
 import { db } from '../provider/firebaseConfig';
@@ -197,8 +197,8 @@ const NhapThongTinKhachHang = () => {
           <label htmlFor="chi_phi_y_te_di_lai_2">Chi Phí Y Tế Đi Lại 2</label>
           <input type="text" id="chi_phi_y_te_di_lai_2" name="chi_phi_y_te_di_lai_2" className="border p-2 w-full" />
         </div>
+        <button type="submit">Submit</button>
       </form>
-      <button type="submit">Submit</button>
 
     </div>
   );

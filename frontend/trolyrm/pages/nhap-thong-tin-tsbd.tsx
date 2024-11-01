@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { doc, setDoc } from 'firebase/firestore';
 import { db } from '../provider/firebaseConfig';
+import '../public/styles.css'; // Đường dẫn tới file CSS
 
 const NhapThongTinTSBD = () => {
   const [formData, setFormData] = useState({
