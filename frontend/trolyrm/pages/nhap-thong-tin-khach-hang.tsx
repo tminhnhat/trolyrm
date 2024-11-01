@@ -1,12 +1,70 @@
 // pages/nhap-thong-tin-khach-hang.js
 import React from 'react';
 import '../public/styles.css'; // Đường dẫn tới file CSS
+import { doc, setDoc } from 'firebase/firestore';
+import { db } from './firebaseConfig';
 
 const NhapThongTinKhachHang = () => {
+  const [formData, setFormData] = useState({
+    // Initialize your form fields here
+    so_cif_kh_vay: '',
+    ten_kh_vay: '',
+    ngay_sinh: '',
+    so_cccd: '',
+    noi_cap_cccd: '',
+    ngay_cap_cccd: '',
+    dia_chi_kh_vay: '',
+    so_dt_kh_vay: '',
+    so_cif_kh_2: '',
+    ten_kh_2: '',
+    ngay_sinh_2: '',
+    so_cccd_2: '',
+    noi_cap_cccd_2: '',
+    ngay_cap_cccd_2: '',
+    loai_kh_vay: '',
+    so_dkkd: '',
+    ngay_cap_dkkd: '',
+    noi_cap_dkkd: '',
+    nganh_nghe_kd: '',
+    thu_nhap_luong_1: '',
+    thu_nhap_luong_2: '',
+    thu_nhap_cho_thue_1: '',
+    thu_nhap_cho_thue_2: '',
+    thu_nhap_kd_1: '',
+    thu_nhap_kd_2: '',
+    thu_nhap_khac_1: '',
+    thu_nhap_khac_2: '',
+    chi_phi_khac_1: '',
+    chi_phi_khac_2: '',
+    chi_phi_sinh_hoat_1: '',
+    chi_phi_sinh_hoat_2: '',
+    chi_phi_y_te_di_lai_1: '',
+    chi_phi_y_te_di_lai_2: ''
+    // Add other fields as needed
+  });
+  
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await setDoc(doc(db, 'thongtinkhcn', 'yourDocumentId'), formData);
+      alert('Data updated successfully!');
+    } catch (error) {
+      console.error('Error updating document: ', error);
+      alert('Failed to update data.');
+    }
+  };
   return (
+    
     <div className="container mx-auto p-8">
       <h1 className="text-2xl mb-4">Thông tin khách hàng vay</h1>
-      <form className="grid grid-cols-1 sm:grid-cols-2 gap-4" onSubmit={(e) => e.preventDefault()}>
+      <form className="grid grid-cols-1 sm:grid-cols-2 gap-4" onSubmit={handleSubmit}>
         <div>
           <label htmlFor="so_cif_kh_vay">Số CIF KH Vay</label>
           <input type="text" id="so_cif_kh_vay" name="so_cif_kh_vay" className="border p-2 w-full" />

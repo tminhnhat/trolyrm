@@ -1,5 +1,6 @@
 // pages/nhap-thong-tin-tsbd.js
 import React from 'react';
+import '../public/styles.css'; // Đường dẫn tới file CSS
 
 const NhapThongTinTSBD = () => {
   return (

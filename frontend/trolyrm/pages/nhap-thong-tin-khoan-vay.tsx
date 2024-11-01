@@ -1,5 +1,6 @@
 // pages/nhap-thong-tin-khoan-vay.js
 import React from 'react';
+import '../public/styles.css'; // Đường dẫn tới file CSS
 
 const NhapThongTinKhoanVay = () => {
   return (
