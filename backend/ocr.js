@@ -1,6 +1,6 @@
 const vision = require('@google-cloud/vision');
 const Tesseract = require('tesseract.js');
-const Jimp = require("jimp");
+const { Jimp } = require('jimp');
 const path = require('path');
 const { deleteFile } = require('./utils');
 
